@@ -13,7 +13,7 @@ export function FormAdd (props: IFormProps) {
   }
   return (
     <form onSubmit={onFormSubmit}>
-      <input value={name} onChange={e=>setName((e.target as HTMLInputElement).value)}/>
+      <input value={name} placeholder="enter a github username" onChange={e=>setName((e.target as HTMLInputElement).value)}/>
       <button>Add</button>
     </form>
   );

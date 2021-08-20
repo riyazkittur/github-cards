@@ -13,11 +13,15 @@ export function App (props: IAppProps) {
 const[profiles,updateProfile]=React.useState<ICardProps[]>([])
 
 const onClickAdd=async (userName:string)=>{
-  
-  const response = await axios.get(`https://api.github.com/users/${userName}`)
-   const {name,avatar_url,company}=response.data;
-   const profile:ICardProps={name,avatar_url,company}
-   updateProfile([...profiles,profile]);
+  try{
+    const response = await axios.get(`https://api.github.com/users/${userName}`)
+    const {name,avatar_url,company}=response.data;
+    const profile:ICardProps={name,avatar_url,company}
+    updateProfile([...profiles,profile]);
+  }
+  catch(errorResponse){
+    console.log('An error occured',errorResponse)
+  }
    
 }
   return (
